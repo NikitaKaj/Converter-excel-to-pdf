@@ -1,4 +1,5 @@
 import PySimpleGUI as sg
+import pandas as pd
 
 sg.theme("Default1")
 
@@ -22,5 +23,20 @@ while True:
 
     if event == sg.WIN_CLOSED:
         break
+
+    if event == "-FILEPATH-":
+        file_path = values["-FILEPATH-"]
+        if file_path:
+            df = pd.ExcelFile(file_path)
+            sheet_names = df.sheet_names
+            window["-SHEETS-"].update(sheet_names)
+
+
+    if event == "-UPDATE_SHEETS-":
+        file_path = values["-FILEPATH-"]
+        if file_path:
+            df = pd.ExcelFile(file_path)
+            sheet_names = df.sheet_names
+            window["-SHEETS-"].update(sheet_names)
 
 window.close()
