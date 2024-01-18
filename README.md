@@ -1,4 +1,4 @@
-### Projekta uzdevums
+### Projekta uzdevums</br></br>
 Programma automatizē Excel faila vai īpaši atlasītu lapu konvertēšanu PDF formātā. Šis projekts ļauj konvertēt faila formātu daudz ātrāk nekā manuāli, izmantojot pašu Excel. Programma Excel pārvērš atlasītās lapas dažādos PDF failos.
 </br>
 ### Izmantotas bibliotēkas
