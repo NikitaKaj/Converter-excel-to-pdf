@@ -6,7 +6,7 @@ Programma automatizē Excel faila vai īpaši atlasītu lapu konvertēšanu PDF 
 PySimpleGUI - izveido programmas logu ar iespēju izvēlēties ceļus, lapas, kā arī ļauj izveidot ērtu lietotāja interfeisu.</br>
 Pandas - izmanto, lai lasītu lapu skaitu un nosaukumu.</br>
 os - atrod ceļu un maina faila formātu.</br>
-re - bibliotēka pārbauda, ​​vai lietotāja ievadītā vērtība atbilst Excel faila šūnai.
+re - bibliotēka pārbauda, vai lietotāja ievadītā vērtība atbilst Excel faila šūnai.
 </br>
 ### Programmatūras izmantošanas metodes
 </br>Programma ļauj konvertēt no Excel uz PDF, kas ļauj automatizēt konvertēšanas procesu. Varat izvēlēties faila ceļu, atlasīt noteiktas Excel lapas. Ļauj izvēlēties saglabāšanas vietu.
