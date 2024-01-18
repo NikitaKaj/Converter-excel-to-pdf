@@ -6,4 +6,4 @@ Pandas - izmanto, lai lasītu lapu skaitu un nosaukumu.</br>
 os - atrod ceļu un maina faila formātu.</br>
 re - bibliotēka pārbauda, ​​vai lietotāja ievadītā vērtība atbilst Excel faila šūnai.
 </br>
-</br>Programma ļauj konvertēt no Excel uz PDF, kas ļauj automatizēt konvertēšanas procesu. Varat izvēlēties faila ceļu, atlasīt noteiktas Excel lapas. Ļauj izvēlēties saglabāšanas vietu.
+</br>Programma ļauj konvertēt no Excel uz PDF, kas ļauj automatizēt konvertēšanas procesu. Var izvēlēties faila ceļu, atlasīt noteiktas Excel lapas. Ļauj izvēlēties saglabāšanas vietu.
