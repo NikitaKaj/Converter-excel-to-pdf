@@ -9,7 +9,7 @@ sg.theme("Default1")
 def get_output_filename(sheet_name, cell_value):
     return cell_value.strip() if cell_value else f"Sheet_{sheet_name}"
 
-def is_valid_cell(cell):
+def is_valid_cell(cell): # G2
     pattern = r"^[A-Za-z]+\d+$"
     return re.match(pattern, cell)
 
@@ -59,7 +59,6 @@ while True:
             df = pd.ExcelFile(file_path)
             sheet_names = df.sheet_names
             window["-SHEETS-"].update(sheet_names)
-
 
     if event == "-UPDATE_SHEETS-":
         file_path = values["-FILEPATH-"]
