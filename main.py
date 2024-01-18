@@ -56,26 +56,35 @@ while True:
     if event == "-FILEPATH-":
         file_path = values["-FILEPATH-"]
         if file_path:
-            df = pd.ExcelFile(file_path)
-            sheet_names = df.sheet_names
-            window["-SHEETS-"].update(sheet_names)
-
+            try:
+                df = pd.ExcelFile(file_path)
+                sheet_names = df.sheet_names
+                window["-SHEETS-"].update(sheet_names)
+            except Exception as e:
+                sg.popup_error(f"Error occurred: Filepath")
+    
     if event == "-UPDATE_SHEETS-":
         file_path = values["-FILEPATH-"]
         if file_path:
-            df = pd.ExcelFile(file_path)
-            sheet_names = df.sheet_names
-            window["-SHEETS-"].update(sheet_names)
-
+            try:
+                df = pd.ExcelFile(file_path)
+                sheet_names = df.sheet_names
+                window["-SHEETS-"].update(sheet_names)
+            except Exception as e:
+                sg.popup_error(f"Error occurred: Update Sheets")
+    
     if event == "-CONVERT-":
         file_path = values["-FILEPATH-"]
         output_dir = values["-OUTPUT_DIR-"]
         selected_sheets = values["-SHEETS-"]
         cell = values["-CELL-"]
         if file_path and output_dir and selected_sheets:
-            file_path = os.path.abspath(file_path)
-            for sheet_name in selected_sheets:
-                excel_to_pdf(file_path, sheet_name, cell, output_dir)
-            sg.popup("Success", "Conversion to PDF completed!")
+            try:
+                file_path = os.path.abspath(file_path)
+                for sheet_name in selected_sheets:
+                    excel_to_pdf(file_path, sheet_name, cell, output_dir)
+                sg.popup("Success", "Conversion to PDF completed!")
+            except Exception as e:
+                sg.popup_error(f"Error occurred: File Saving")
 
 window.close()
