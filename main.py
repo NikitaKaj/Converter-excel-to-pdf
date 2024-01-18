@@ -1,7 +1,36 @@
+import win32com.client as win32
 import PySimpleGUI as sg
 import pandas as pd
+import os
+import re
 
 sg.theme("Default1")
+
+def get_output_filename(sheet_name, cell_value):
+    return cell_value.strip() if cell_value else f"Sheet_{sheet_name}"
+
+def is_valid_cell(cell):
+    pattern = r"^[A-Za-z]+\d+$"
+    return re.match(pattern, cell)
+
+def excel_to_pdf(input_excel_file, sheet_name, cell, output_pdf_file):
+    excel = win32.Dispatch("Excel.Application")
+    wb = excel.Workbooks.Open(input_excel_file)
+    ws = wb.Worksheets(sheet_name)
+
+    if cell and is_valid_cell(cell):
+        try:
+            cell_value = ws.Range(cell).Value
+        except Exception:
+            cell_value = None
+    else:
+        cell_value = None
+
+    filename = get_output_filename(sheet_name, cell_value)
+    output_pdf_file = os.path.join(output_pdf_file, f"{filename}.pdf")
+    ws.ExportAsFixedFormat(0, output_pdf_file)
+    wb.Close(True)
+    excel.Quit()
 
 layout = [
     [sg.Text("Select Excel file:")],
@@ -38,5 +67,16 @@ while True:
             df = pd.ExcelFile(file_path)
             sheet_names = df.sheet_names
             window["-SHEETS-"].update(sheet_names)
+
+    if event == "-CONVERT-":
+        file_path = values["-FILEPATH-"]
+        output_dir = values["-OUTPUT_DIR-"]
+        selected_sheets = values["-SHEETS-"]
+        cell = values["-CELL-"]
+        if file_path and output_dir and selected_sheets:
+            file_path = os.path.abspath(file_path)
+            for sheet_name in selected_sheets:
+                excel_to_pdf(file_path, sheet_name, cell, output_dir)
+            sg.popup("Success", "Conversion to PDF completed!")
 
 window.close()
